@@ -1,1 +1,81 @@
 function ps?() { ps aux | grep \\b$1; }
+
+# function _get_git_branch {
+#   local dir=. head
+#   until [ "$dir" -ef / ]; do
+#     if [ -f "$dir/.git/HEAD" ]; then
+#       head=$(< "$dir/.git/HEAD")
+#       if [[ $head == ref:\ refs/heads/* ]]; then
+#         git_branch=" ${head##*/}"
+#       elif [[ $head != '' ]]; then
+#         git_branch=' (detached)'
+#       else
+#         git_branch=' (unknown)'
+#       fi
+#       return
+#     fi
+#     dir="../$dir"
+#   done
+#   git_branch=''
+# }
+
+function _git_branch {
+	git rev-parse --git-dir &> /dev/null
+	git_status="$(git status 2> /dev/null)"
+	branch_pattern="^# On branch ([^${IFS}]*)"
+	remote_pattern="# Your branch is (.*) of"
+	diverge_pattern="# Your branch and (.*) have diverged"
+	if [[ ! ${git_status}} =~ "working directory clean" ]]; then
+		state=" ${RED}⚡"
+	fi
+	# add an else if or two here if you want to get more specific
+	if [[ ${git_status} =~ ${remote_pattern} ]]; then
+		if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
+			remote="${YELLOW}↑"
+		else
+			remote="${YELLOW}↓"
+		fi
+	fi
+	if [[ ${git_status} =~ ${diverge_pattern} ]]; then
+		remote="${YELLOW}↕"
+	fi
+	if [[ ${git_status} =~ ${branch_pattern} ]]; then
+		branch=${BASH_REMATCH[1]}
+		echo " (${branch})${remote}${state}"
+	fi
+}
+
+function _prompt {
+	preview_return_value=$?;
+	prompt="${TITLEBAR}${LIGHT_GRAY}\W${YELLOW}$(_git_branch)${COLOR_NONE}"
+	if test $previous_return_value -eq 0; then
+		PS1="${GREEN}➜  ${COLOR_NONE}${prompt}${GREEN} \$${COLOR_NONE} "
+	else
+		PS1="${RED}➜  ${COLOR_NONE}${prompt}${RED} \$${COLOR_NONE} "
+	fi
+	set_window_and_tab_title "${PWD##*/}"
+}
+
+function set_window_and_tab_title {
+    local title="$1"
+    if [[ -z "$title" ]]; then
+        title="root"
+    fi
+
+    local tmpdir=~/Library/Caches/${FUNCNAME}_temp
+    local cmdfile="$tmpdir/$title"
+    # Set window title
+    echo -n -e "\e]0;${title}\a"
+
+    # Set tab title
+    if [[ -n ${CURRENT_TAB_TITLE_PID:+1} ]]; then
+        kill $CURRENT_TAB_TITLE_PID
+    fi
+    mkdir -p $tmpdir
+    ln /bin/sleep "$cmdfile"
+    "$cmdfile" 10 &
+    CURRENT_TAB_TITLE_PID=$(jobs -x echo %+)
+    disown %+
+    kill -STOP $CURRENT_TAB_TITLE_PID
+    command rm -f "$cmdfile"
+}

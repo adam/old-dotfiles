@@ -6,3 +6,4 @@ shopt -s histappend
 
 export LSCOLORS='ExGxBxDxCxEgEdxbxgxcxd'
 
+PROMPT_COMMAND="_prompt"
