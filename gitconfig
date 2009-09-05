@@ -1,0 +1,17 @@
+[push]
+	default = current
+
+[core]
+	excludesfile = ~/.gitignore
+
+[color]
+	branch = auto
+	diff = true
+	status = true
+
+[alias]
+	df = diff
+	l = log
+	ll = log -p
+	st = status
+	whowhat = log --no-merges --pretty='format:%C(yellow)%cr %Cgreen%an %Creset%s'
