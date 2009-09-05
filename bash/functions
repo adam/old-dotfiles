@@ -1,0 +1,1 @@
+function ps?() { ps aux | grep \\b$1; }

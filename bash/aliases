@@ -1,0 +1,5 @@
+alias ls='ls -G'
+
+alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
+
+alias reload='. ~/.bash_profile'
