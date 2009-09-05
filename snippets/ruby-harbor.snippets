@@ -1,0 +1,39 @@
+# New Controller
+snippet con
+	class ${1:ControllerName}
+		include UserManagement::Authorization
+		include UserManagement::Auditing
+		
+		attr_accessor :request, :response
+		
+		protect "$1", "create"
+		def create(params)
+			
+		end
+		
+		protect "$1", "destroy"
+		def delete(id)
+		
+		end
+		
+		protect "$1", "update"
+		def edit(id)
+		
+		end
+		
+		protect "$1", "create"
+		def new(params)
+		
+		end
+		
+		protect "$1", "show"
+		def show(id)
+		
+		end
+		
+		protect "$1", "update"
+		def update(id, params)
+		
+		end
+		
+	end
