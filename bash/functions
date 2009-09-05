@@ -1,24 +1,5 @@
 function ps?() { ps aux | grep \\b$1; }
 
-# function _get_git_branch {
-#   local dir=. head
-#   until [ "$dir" -ef / ]; do
-#     if [ -f "$dir/.git/HEAD" ]; then
-#       head=$(< "$dir/.git/HEAD")
-#       if [[ $head == ref:\ refs/heads/* ]]; then
-#         git_branch=" ${head##*/}"
-#       elif [[ $head != '' ]]; then
-#         git_branch=' (detached)'
-#       else
-#         git_branch=' (unknown)'
-#       fi
-#       return
-#     fi
-#     dir="../$dir"
-#   done
-#   git_branch=''
-# }
-
 function _git_branch {
 	git rev-parse --git-dir &> /dev/null
 	git_status="$(git status 2> /dev/null)"
@@ -46,7 +27,7 @@ function _git_branch {
 }
 
 function _prompt {
-	preview_return_value=$?;
+	previous_return_value=$?;
 	prompt="${TITLEBAR}${LIGHT_GRAY}\W${YELLOW}$(_git_branch)${COLOR_NONE}"
 	if test $previous_return_value -eq 0; then
 		PS1="${GREEN}➜  ${COLOR_NONE}${prompt}${GREEN} \$${COLOR_NONE} "
@@ -65,7 +46,7 @@ function set_window_and_tab_title {
     local tmpdir=~/Library/Caches/${FUNCNAME}_temp
     local cmdfile="$tmpdir/$title"
     # Set window title
-    echo -n -e "\e]0;${title}\a"
+    echo -n -e "\033]0;${title}\a"
 
     # Set tab title
     if [[ -n ${CURRENT_TAB_TITLE_PID:+1} ]]; then
