@@ -5,7 +5,7 @@ set backspace=indent,eol,start
 set complete-=i
 set display=lastline
 if &grepprg ==# 'grep -n $* /dev/null'
-	set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude='*.log'\ --exclude=tags\ $*\ /dev/null
+  set grepprg=grep\ -rnH\ --exclude='.*.swp'\ --exclude='*~'\ --exclude='*.log'\ --exclude=tags\ $*\ /dev/null
 endif
 set hlsearch
 set incsearch
@@ -18,13 +18,13 @@ set showcmd
 set showmatch
 set smarttab
 if &statusline == ''
-	set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+  set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 endif
 set ttimeoutlen=50
 set wildmenu
 
 if $TERM == '^\%(screen\|xterm-color\)$' && t_Co == 8
-	set t_Co=16
+  set t_Co=16
 endif
 
 let g:is_bash = 1
@@ -79,18 +79,20 @@ syntax on
 filetype plugin indent on
 
 augroup wieck
-	autocmd!
+  autocmd!
 
-	autocmd CursorHold,BufWritePost,BufReadPost,BufLeave *
-	        \ if isdirectory(expand("<amatch>:h")) | let &swapfile = &modified | endif
+  autocmd CursorHold,BufWritePost,BufReadPost,BufLeave *
+    \ if isdirectory(expand("<amatch>:h")) | let &swapfile = &modified | endif
 
-	autocmd FileType javascript             setlocal et sw=2 sts=2 isk+=$
-	autocmd FileType html,xhtml,css         setlocal et sw=2 sts=2
-	autocmd FileType eruby,yaml,ruby	setlocal et sw=2 sts=2
-	autocmd FileType cucumber               setlocal et sw=2 sts=2
-	autocmd FileType gitcommit              setlocal spell
-	autocmd FileType ruby                   setlocal comments=:#\  tw=79
-	autocmd FileType vim			setlocal et sw=2 sts=2 keywordprg=:help
+  au BufRead,BufNewFile *.less setfiletype css
 
-	autocmd Syntax css syn sync minlines=50
+  autocmd FileType javascript             setlocal et sw=2 sts=2 isk+=$
+  autocmd FileType html,xhtml,css         setlocal et sw=2 sts=2
+  autocmd FileType eruby,yaml,ruby        setlocal et sw=2 sts=2
+  autocmd FileType cucumber               setlocal et sw=2 sts=2
+  autocmd FileType gitcommit              setlocal spell
+  autocmd FileType ruby                   setlocal comments=:#\  tw=79
+  autocmd FileType vim                    setlocal et sw=2 sts=2 keywordprg=:help
+
+  autocmd Syntax css syn sync minlines=50
 augroup END
