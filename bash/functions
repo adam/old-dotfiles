@@ -34,7 +34,7 @@ function _prompt {
 	else
 		PS1="${RED}➜  ${COLOR_NONE}${prompt}${RED} \$${COLOR_NONE} "
 	fi
-	set_window_and_tab_title "${PWD##*/}"
+	#set_window_and_tab_title "${PWD##*/}"
 }
 
 function set_window_and_tab_title {
