@@ -91,6 +91,7 @@ augroup wieck
   autocmd FileType eruby,yaml,ruby        setlocal et sw=2 sts=2
   autocmd FileType cucumber               setlocal et sw=2 sts=2
   autocmd FileType gitcommit              setlocal spell
+  autocmd FileType racc                   setlocal et sw=2 sts=2
   autocmd FileType ruby                   setlocal comments=:#\  tw=79
   autocmd FileType vim                    setlocal et sw=2 sts=2 keywordprg=:help
 
