@@ -28,11 +28,11 @@ EOS
 endfunction
 
 if (has('gui_running'))
-	" set guifont=Monaco:h16
-        set guifont=Inconsolata:h12
-	set guioptions-=T
-	set columns=120
-	set lines=70
-	set number
-        set guitablabel=%{CurrentDirectoryName(getcwd())}
+  " set guifont=Monaco:h16
+  set guifont=Inconsolata:h12
+  set guioptions-=T
+  set columns=120
+  set lines=70
+  set number
+  set guitablabel=%{CurrentDirectoryName(getcwd())}
 end
