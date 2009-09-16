@@ -62,5 +62,12 @@ if (has('gui_running'))
   set guitablabel=%{CurrentDirectoryName(getcwd())}
 end
 
-command Trim :exec ":%s/\s\+$//"
-" :command! Trim i :%s/\s\+$//
+function StripTrailingWhitespace()
+  normal mz
+  normal Hmy
+  exec '%s/\s*$//g'
+  normal 'yz<cr>
+  normal `z
+endfunction
+
+command Trim call StripTrailingWhitespace()
