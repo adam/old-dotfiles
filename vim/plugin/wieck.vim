@@ -95,5 +95,7 @@ augroup wieck
   autocmd FileType ruby                   setlocal comments=:#\  tw=79
   autocmd FileType vim                    setlocal et sw=2 sts=2 keywordprg=:help
 
+  au FileType * setl fo-=cro
+
   autocmd Syntax css syn sync minlines=50
 augroup END

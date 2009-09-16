@@ -1,3 +1,6 @@
 # MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
+#export PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+#export MANPATH=/opt/local/share/man:$MANPATH
+
+# Ruby Version Manager
+if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
