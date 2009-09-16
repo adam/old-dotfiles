@@ -61,3 +61,6 @@ if (has('gui_running'))
   set number
   set guitablabel=%{CurrentDirectoryName(getcwd())}
 end
+
+command Trim :exec ":%s/\s\+$//"
+" :command! Trim i :%s/\s\+$//
