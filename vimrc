@@ -1,8 +1,8 @@
 syntax on
 filetype plugin indent on
-" colorscheme vividchalk
+colorscheme vividchalk
 " colorscheme summerfruit256
-colorscheme pyte
+" colorscheme pyte
 " colorscheme ir_black
 
 let g:mapleader = ","
@@ -51,16 +51,6 @@ ruby << EOS
 EOS
   return l:result
 endfunction
-
-if (has('gui_running'))
-  " set guifont=Monaco:h16
-  set guifont=Inconsolata:h12
-  set guioptions-=T
-  set columns=120
-  set lines=70
-  set number
-  set guitablabel=%{CurrentDirectoryName(getcwd())}
-end
 
 function StripTrailingWhitespace()
   normal mz
