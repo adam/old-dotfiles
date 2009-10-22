@@ -99,3 +99,18 @@ augroup wieck
 
   autocmd Syntax css syn sync minlines=50
 augroup END
+
+" Cmd-R - Run
+nmap <D-R> :!ruby %<CR>
+
+" Cmd-1 - Start/Restart Thin
+nmap <D-1> :!ts<CR><CR>
+
+" Cmd-t - TextMate style 'Go to file'
+" Note: Needs to be unmapped in .gvimrc
+nnoremap <D-t> :FuzzyFinderTextMate<CR>
+
+nnoremap <D-T> :ta 
+
+" Ctrl-\ - Test All
+nmap <C-\> :!rake test<CR>

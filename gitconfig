@@ -12,6 +12,7 @@
 [alias]
 	df = diff
 	l = log
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	ll = log -p
 	st = status
 	whowhat = log --no-merges --pretty='format:%C(yellow)%cr %Cgreen%an %Creset%s'

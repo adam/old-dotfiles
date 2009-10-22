@@ -19,7 +19,7 @@ nnoremap <silent><S-l> :bn<CR>
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
 let NERDChristmasTree=1
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['tags', '\.git', '\index$', '\log$', 'tmp', '\pkg', '\.swp$', '\.db$', '\.gz$', '\.DS_Store', '\~$']
+let NERDTreeIgnore=['tags', '\.git', '\\index$', '\\log$', 'tmp', '\\pkg', '\.swp$', '\.db$', '\.gz$', '\.DS_Store', '\~$']
 
 " BufExplorer
 nnoremap <C-B> :BufExplorer<cr>
