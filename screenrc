@@ -1,0 +1,33 @@
+#shell -${SHELL}
+
+vbell off
+defscrollback 10000
+
+# don't display the copyright message
+startup_message off
+
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+# caption always "%{= gk}%-Lw%{= rW}%50> %n%f* %t %{-}%+Lw%< %= %{= Gk} %H %{= rW} %l %{= Gk} %0c:%s %d/%m %{-}"
+caption always "%{= dc}%-w%{= dg}%50> %n%f %t %{= dc}%+w%< %= %{= dc} %H %{= dr} %l %{= dc} %M %d %0c %{-}"
+shell -$SHELL
+
+escape ``
+
+bindkey "\033[1;5C" next
+bindkey "\033[1;5D" prev
+bindkey "^n" screen
+
+# caption always "%{kB}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kB}%?%+Lw%?"
+# hardstatus alwayslastline "%{BW}%16=%l %{BW}%50=%d/%m/%Y %{BW}%80=%c%="
+
+# unicode
+defutf8 on
+
+# allow bold colors
+attrcolor b ".I"
+
+# prepend/append register [/] to the paste if ^a^] is pressed.
+# this provides support for autoindent mode in vi
+register [ "\033:se noai\015a"
+register ] "\033:se ai\015a"
+bind ^] paste [.]
