@@ -65,7 +65,9 @@ function prompt_char {
   echo '○'
 }
 
-RPROMPT='$(battery_charge)'
+if [[ `uname` == 'Darwin' ]]; then
+  RPROMPT='$(battery_charge)'
+fi
 
 export PS1='%{$reset_color$fg[gray]%}$(prompt_char) %2~%{$reset_color$bold_color$fg[green]%} %{$reset_color%}$(git_prompt_info) >%{$reset_color%} '
 
