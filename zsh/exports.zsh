@@ -1,4 +1,4 @@
-export PATH=~/.rvm/bin:$PATH
+export PATH=~/bin:~/.rvm/bin:$PATH
 
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 

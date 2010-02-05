@@ -54,7 +54,9 @@ function git_prompt_info() {
 }
 
 function battery_charge {
-  echo `~/workspace/personal/scripts/batcharge` 2>/dev/null
+  if [[ `~/bin/power-source` =~ "Battery" ]]; then
+    echo `~/bin/battery-capacity` 2>/dev/null
+  fi
 }
 
 function prompt_char {
