@@ -140,3 +140,54 @@ autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 
 " Vim
 autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2 keywordprg=:help
+
+function! RunTests(target, args)
+  silent ! echo
+  exec 'silent ! echo -e "\033[1;36mRunning tests in ' . a:target . '\033[0m"'
+  set makeprg=spec
+  silent w
+  exec "make " . a:target . " " . a:args
+endfunction
+
+function! RunTestsForFile(args)
+  if @% =~ 'test_'
+    call RunTests('%', a:args)
+  else
+    " let test_file_name = TestModuleForCurrentFile()
+    " call RunTests(test_file_name, a:args)
+  endif
+endfunction
+
+function! JumpToError()
+  if getqflist() != []
+    for error in getqflist()
+      if error['valid']
+        break
+      endif
+    endfor
+    let error_message = substitude(error['text'], '^ &', '', 'g')
+    silent cc!
+    exec ":sbuffer " . error['bufnr']
+    call RedBar()
+    echo error_message
+  else
+    call GreenBar()
+    echo "All tests passed"
+  endif
+endfunction
+
+function! GreenBar()
+  hi GreenBar ctermfg=white ctermbg=green guibg=green
+  echohl GreenBar
+  echon repeat(" ",&columns - 1)
+  echohl
+endfunction
+
+function! RedBar()
+  hi RedBar ctermfg=white ctermbg=red guibg=red
+  echohl RedBar
+  echon repeat(" ",&columns - 1)
+  echohl
+endfunction
+
+nnoremap <LEADER>m :call RunTestsForFile('')<CR>:redraw<CR>:call JumpToError()<CR>
