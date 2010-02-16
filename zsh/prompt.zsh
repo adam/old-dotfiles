@@ -1,11 +1,12 @@
 # Put the string "hostname::/full/directory/path" in the title bar:
 function set_term_title {
-echo -ne "\e]2;$PWD\a"
+  #echo -ne "\e]2;$PWD\a"
+  echo -ne "\ek$PWD:h:t/$PWD:t\e\\"
 }
  
 # Put the parentdir/currentdir in the tab
 function set_term_tab {
-echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
+  #echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
 }
  
 function set_running_app {
@@ -18,11 +19,11 @@ function precmd {
 }
  
 function preexec {
-  set_running_app
+  #set_running_app
 }
  
 function postexec {
-  set_running_app
+  #set_running_app
 }
  
 function parse_git_branch() {
