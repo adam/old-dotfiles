@@ -193,3 +193,6 @@ endfunction
 nnoremap <LEADER>m :call RunTestsForFile('')<CR>:redraw<CR>:call JumpToError()<CR>
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+"set makeprg="ruby %"
+autocmd QuickFixCmdPost * belowright cwindow 5
