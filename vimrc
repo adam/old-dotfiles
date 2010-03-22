@@ -124,6 +124,8 @@ let g:Tlist_Close_On_Select=1
 " Sort the tags by name
 let g:Tlist_Sort_Type="name"
 
+autocmd BufRead,BufNewFile Gemfile set filetype=ruby
+
 autocmd FileType eruby setlocal expandtab shiftwidth=2 softtabstop=2
 
 " HTML, XHTML, CSS
