@@ -1,10 +1,10 @@
 " Turn off VI-compatibility.
 set nocompatible
 
-set t_Co=16
-set background=dark
+"set t_Co=16
+"set background=dark
 
-colorscheme vividchalk
+"colorscheme vividchalk
 
 " Turn on syntax highlighting.
 syntax on
@@ -99,7 +99,7 @@ nmap <silent> <Leader>p :NERDTreeToggle<CR>
 " Make NERD Tree colorful and pretty
 let g:NERDChristmasTree=1
 " Display hidden files
-let g:NERDTreeShowHidden=1
+"let g:NERDTreeShowHidden=1
 " Ignores
 let g:NERDTreeIgnore=['tags', '\.git', '\\index$', '\\log$', 'tmp', '\\pkg', '\.swp$', '\.db$', '\.gz$', '\.DS_Store', '\~$']
 " Close NERD Tree after opening a file
