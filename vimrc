@@ -38,10 +38,13 @@ set backspace=indent,eol,start
 set display=lastline
 
 " Highlight previous search matches.
-set hlsearch
+"set hlsearch
 
 " Search while typing.
 set incsearch
+
+" Search case insensitively
+set ignorecase
 
 " Always show a status line.
 set laststatus=2
@@ -61,7 +64,7 @@ set sidescrolloff=5
 set showcmd
 
 " When a bracket is inserted, briefly jump to the matching one.
-set showmatch
+"set showmatch
 
 " A <Tab> in front of a line inserts blanks according to shiftwidth, a <BS>
 " will delete a shiftwidth worth of space.
@@ -80,6 +83,12 @@ nnoremap <silent><C-j> <C-w>j
 nnoremap <silent><C-k> <C-w>k
 nnoremap <silent><C-l> <C-w>l
 nnoremap <silent><C-h> <C-w>h
+
+" Stay the hell out of insert mode (disabling arrow keys in insert mode)
+"inoremap <Left>  <NOP>
+"inoremap <Right> <NOP>
+"inoremap <Up>    <NOP>
+"inoremap <Down>  <NOP>
 
 " MiniBufExplorer configuration.
 map <Leader>b :MiniBufExplorer<CR>
@@ -104,7 +113,7 @@ let g:NERDChristmasTree=1
 let g:NERDTreeIgnore=['tags', '\.git', '\\index$', '\\log$', 'tmp', '\\pkg', '\.swp$', '\.db$', '\.gz$', '\.DS_Store', '\~$']
 " Close NERD Tree after opening a file
 let g:NERDTreeQuitOnOpen=1
-"let g:NERDTreeHighlightCursorline=1
+let g:NERDTreeHighlightCursorline=1
 
 " Taglist
 " Toggle the taglist window
@@ -123,6 +132,7 @@ let g:Tlist_Show_One_File=1
 let g:Tlist_Close_On_Select=1
 " Sort the tags by name
 let g:Tlist_Sort_Type="name"
+
 
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 
