@@ -98,10 +98,6 @@ map <Leader>b :MiniBufExplorer<CR>
 "let g:miniBufExplModSelTarget=1
 let g:miniBufExplMapWindowNavVim=1
 
-" Fuzzy Finder / Fuzzy Finder TextMate
-" Similar to TextMate's "Go to File"
-map <leader>t :FuzzyFinderTextMate<CR>
-
 " NERD Tree
 " Toggle NERD Tree with ",p"
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
@@ -132,7 +128,6 @@ let g:Tlist_Show_One_File=1
 let g:Tlist_Close_On_Select=1
 " Sort the tags by name
 let g:Tlist_Sort_Type="name"
-
 
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 
@@ -208,3 +203,14 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "set makeprg="ruby %"
 autocmd QuickFixCmdPost * belowright cwindow 5
+
+" scratch.vim and leader configuration
+function! ToggleScratch()
+  if expand('%') == g:ScratchBufferName
+    quit
+  else
+    Sscratch
+  endif
+endfunction
+
+map <leader>s :call ToggleScratch()<CR>
