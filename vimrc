@@ -197,20 +197,15 @@ function! RedBar()
   echohl
 endfunction
 
+" ,m to run tests
 nnoremap <LEADER>m :call RunTestsForFile('')<CR>:redraw<CR>:call JumpToError()<CR>
+
+" ,s to run shell
+nnoremap <LEADER>s :shell<CR>
+
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "set makeprg="ruby %"
 autocmd QuickFixCmdPost * belowright cwindow 5
 
-" scratch.vim and leader configuration
-function! ToggleScratch()
-  if expand('%') == g:ScratchBufferName
-    quit
-  else
-    Sscratch
-  endif
-endfunction
-
-map <leader>s :call ToggleScratch()<CR>
