@@ -203,9 +203,19 @@ nnoremap <LEADER>m :call RunTestsForFile('')<CR>:redraw<CR>:call JumpToError()<C
 " ,s to run shell
 nnoremap <LEADER>s :shell<CR>
 
+" ,v to toggle on paste
+nnoremap <LEADER>v :paste<CR>
+
+",n to toggle off paste
+nnoremap <LEADER>n :nopaste<CR>
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "set makeprg="ruby %"
 autocmd QuickFixCmdPost * belowright cwindow 5
 
+" code folding
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
